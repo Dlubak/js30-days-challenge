@@ -3,7 +3,7 @@
 
 01 - JavaScript Drum Kit [done]</br>
 02 - JS and CSS Clock [done]</br>
-03 - CSS Variables</br>
+03 - CSS Variables [done] </br>
 04 - Array Cardio Day 1 </br>
 05 - Flex Panel Gallery</br>
 06 - Type Ahead </br>
