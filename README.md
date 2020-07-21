@@ -5,7 +5,7 @@
 02 - JS and CSS Clock [done]</br>
 03 - CSS Variables [done] </br>
 04 - Array Cardio Day 1 [done] </br>
-05 - Flex Panel Gallery</br>
+05 - Flex Panel Gallery [done] </br>
 06 - Type Ahead </br>
 07 - Array Cardio Day 2</br>
 08 - Fun with HTML5 Canvas</br>
