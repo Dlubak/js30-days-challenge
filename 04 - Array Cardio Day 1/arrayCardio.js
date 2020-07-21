@@ -2,7 +2,6 @@
 // ## Array Cardio Day 1
 
 // Some data we can work with
-
 const inventors = [
   { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
   { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
@@ -64,24 +63,56 @@ const people = [
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
-
+const traditionalistGeneration = inventors.filter(inventor => {
+  if (inventor.year >= 1500 && inventor.year <= 1599) {
+    return inventor;
+  }
+});
+console.table(traditionalistGeneration);
 // Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
-
+const personalData = inventors.map(
+  inventor => `${inventor.first} ${inventor.last}`
+);
+console.table(personalData);
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
-
+const youngestToOldestInventors = inventors.sort(
+  (inventorA, inventorB) => inventorA.year - inventorB.year
+);
+console.table(youngestToOldestInventors);
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
-
+const sumLengthOfInventorLives = inventors.reduce(
+  (sum, inventor) => sum + (inventor.passed - inventor.year),
+  0
+);
+console.log(sumLengthOfInventorLives);
 // 5. Sort the inventors by years lived
-
+const yearsLived = inventors.sort((inventorA, inventorB) => {
+  const a = inventorA.passed - inventorA.year;
+  const b = inventorB.passed - inventorB.year;
+  return b - a;
+});
+console.table(yearsLived);
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+const categories = document.querySelector('.mw-category');
+const links = Array.from(categories.querySelectorAll('a'));
+const sortedByDe = links
+  .map(link => link.textContent)
+  .filter(text => text.includes('de'));
+console.table(sortedByDe);
 // 7. sort Exercise
 // Sort the people alphabetically by last name
-
+const peopleObj = [
+  people.reduce((acc, next) => {
+    const [name, last] = next.split(', ');
+    acc[last] = name;
+    return acc;
+  }, {}),
+].sort();
+console.log(peopleObj);
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = [
@@ -100,3 +131,13 @@ const data = [
   'car',
   'truck',
 ];
+
+const sumInstance = data.reduce((acc, name) => {
+  if (name in acc) {
+    acc[name] += 1;
+  } else {
+    acc[name] = 0;
+  }
+  return acc;
+}, {});
+console.table(sumInstance);
