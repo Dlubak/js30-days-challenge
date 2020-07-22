@@ -4,6 +4,7 @@ const endpoint =
 const inputBox = document.querySelector('.search-form');
 const suggestionBox = document.querySelector('.suggestions');
 let cities;
+let emptyInput;
 
 window.onload = async function fetchData() {
   const data = await fetch(endpoint);
@@ -11,9 +12,11 @@ window.onload = async function fetchData() {
   cities = json;
 };
 
-function populateSuggestions(input, clear) {
-  if (clear) {
-    suggestionBox.innerHTML = '';
+function populateSuggestions(input, clearInput) {
+  if (clearInput) {
+    suggestionBox.innerHTML = `
+    <li>Filter for a city</li>
+    <li>or a state</li>`;
     return;
   }
   const populate = Array.from(cities)
@@ -29,9 +32,9 @@ function populateSuggestions(input, clear) {
 
 function handleInput(event) {
   const input = event.target.value;
-  let clear;
-  if (!input) clear = true;
-  populateSuggestions(input, clear);
+  emptyInput = false;
+  if (!input) emptyInput = true;
+  populateSuggestions(input, emptyInput);
 }
 
 inputBox.addEventListener('input', handleInput);
