@@ -9,8 +9,8 @@
 06 - Type Ahead [done] </br>
 07 - Array Cardio Day 2 [done] </br>
 08 - Fun with HTML5 Canvas [done] </br>
-09 - Dev Tools Domination</br>
-10 - Hold Shift and Check Checkboxes </br> 
+09 - Dev Tools Domination [done] </br>
+10 - Hold Shift and Check Checkboxes [done] </br> 
 11 - Custom Video Player</br>
 12 - Key Sequence Detection</br>
 13 - Slide in on Scroll</br>
