@@ -11,7 +11,7 @@
 08 - Fun with HTML5 Canvas [done] </br>
 09 - Dev Tools Domination [done] </br>
 10 - Hold Shift and Check Checkboxes [done] </br> 
-11 - Custom Video Player</br>
+11 - Custom Video Player [done] </br>
 12 - Key Sequence Detection</br>
 13 - Slide in on Scroll</br>
 14 - JavaScript References VS Copying</br>
