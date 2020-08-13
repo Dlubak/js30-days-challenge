@@ -3,11 +3,9 @@ const keySequence = [];
 
 function handleKeys(e) {
   keySequence.push(e.key);
-  keySequence.splice(
-    -secretCode.length - 1,
-    keySequence.length - secretCode.length
-  );
-  console.log(keySequence);
+  if (keySequence.length >= secretCode.length + 1) {
+    keySequence.shift();
+  }
   if (keySequence.join('').includes(secretCode)) {
     console.log('secret sequence found');
   }
