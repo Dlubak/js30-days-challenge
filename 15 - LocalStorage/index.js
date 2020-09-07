@@ -7,17 +7,19 @@ function displayList() {
     .map(
       (item, i) => `
     <li>
-        <input type="checkbox" value="${i}" ${item.completed ? 'checked' : ''}>
-        <label for="${i}">${item.name}</label>
+      <input type="checkbox" id="${i}" ${item.completed ? 'checked' : ''}/>
+      <label for="${i}">${item.name}</label>
     </li>`
     )
     .join('');
 }
 function markCompleted(event) {
-  const item = items[event.target.getAttribute('for')];
-  item.completed = !item.completed;
-  displayList();
-  localStorage.setItem('items', JSON.stringify(items));
+  if (event.target.matches('input')) {
+    const { id } = event.target;
+    items[id].completed = !items[id].completed;
+    localStorage.setItem('items', JSON.stringify(items));
+    displayList();
+  }
 }
 function addItem(event) {
   event.preventDefault();
@@ -28,11 +30,10 @@ function addItem(event) {
   };
   items.push(itemData);
   event.target.reset();
-  displayList();
   localStorage.setItem('items', JSON.stringify(items));
+  displayList();
 }
 
 addItems.addEventListener('submit', addItem);
 itemsList.addEventListener('click', markCompleted);
-
 displayList();
