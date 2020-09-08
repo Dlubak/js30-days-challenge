@@ -1,18 +1,19 @@
-const hero = document.querySelector('.hero');
-const text = hero.querySelector('h1');
-const walk = 100;
-function handleMouseMove(event) {
-  const [textHeight, textWidth] = [hero.offsetWidth, hero.offsetHeight];
+const heroEl = document.querySelector('.hero');
+const text = heroEl.querySelector('h1');
+const range = 50 * 2;
+
+function handleMouseEvent(event) {
   let { x } = event;
   let { y } = event;
+  const [textHeight, textWidth] = [heroEl.offsetWidth, heroEl.offsetHeight];
   if (!event.target.matches('h1')) {
     x += event.target.offsetLeft;
     y += event.target.offsetTop;
   }
-  const xWalk = Math.round((x / textHeight) * walk - walk / 2);
-  const yWalk = Math.round((y / textWidth) * walk - walk / 2);
+  const xRange = Math.round((y / textWidth) * range - range / 2);
+  const yRange = Math.round((x / textHeight) * range - range / 2);
 
-  text.style.textShadow = `${xWalk}px ${yWalk}px 0 red`;
+  text.style.textShadow = `${xRange}px ${yRange}px 0 red`;
 }
 
-hero.addEventListener('mousemove', handleMouseMove);
+heroEl.addEventListener('mousemove', handleMouseEvent);
