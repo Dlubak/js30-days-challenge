@@ -13,3 +13,21 @@ const bands = [
   'Anywhere But Here',
   'An Old Dog',
 ];
+// a | an | the
+function cleanArticles(name) {
+  const articles = ['a', 'an', 'the'];
+  const words = name.toLowerCase().split(' ');
+  const containsArticle = articles.includes(words[0]);
+  if (containsArticle) {
+    return words.splice(1, words.length).join(' ');
+  }
+  return name;
+}
+
+document.querySelector('#bands').innerHTML = bands
+  .sort((a, b) => cleanArticles(a).localeCompare(cleanArticles(b)))
+  .map(
+    item => `
+    <li>${item}</li>`
+  )
+  .join('');
