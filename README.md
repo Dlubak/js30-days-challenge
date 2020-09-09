@@ -15,12 +15,12 @@
 12 - Key Sequence Detection [done] </br>
 13 - Slide in on Scroll [done] </br>
 14 - JavaScript References VS Copying [done] </br>
-15 - LocalStorage</br>
-16 - Mouse Move Shadow</br>
-17 - Sort Without Articles</br>
-18 - Adding Up Times with Reduce</br>
-19 - Webcam Fun</br>
-20 - Speech Detection</br>
+15 - LocalStorage [done] </br>
+16 - Mouse Move Shadow [done] </br>
+17 - Sort Without Articles [done] </br>
+18 - Adding Up Times with Reduce [done] </br>
+19 - Webcam Fun [omit due to camera lack]</br>
+20 - Speech Detection [done] </br>
 21 - Geolocation</br>
 22 - Follow Along Link Highlighter</br>
 23 - Speech Synthesis</br>
