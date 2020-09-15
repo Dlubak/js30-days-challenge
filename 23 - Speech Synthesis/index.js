@@ -1,41 +1,41 @@
-// eslint-disable-next-line prefer-const
 let voices = [];
 const voicesDropdown = document.querySelector('[name="voice"]');
 const options = document.querySelectorAll('[type="range"], [name="text"]');
 const speakButton = document.querySelector('#speak');
 const stopButton = document.querySelector('#stop');
-const inputBox = options[2].value;
-let rateValue = options[0].value;
-let pitchValue = options[1].value;
-let glos = '';
-const voiceschanged = () => {
-  window.speechSynthesis.getVoices().forEach(voice => {
-    voices.push(voice);
-  });
-  voices.forEach(voice => {
-    const element = document.createElement('option');
-    element.value = voice.lang;
-    element.textContent = voice.name;
-    voicesDropdown.appendChild(element);
-  });
+const elements = {
+  rate: options[0].value,
+  pitch: options[1].value,
+  input: options[2].value,
 };
-speechSynthesis.onvoiceschanged = voiceschanged;
-function speak() {
-  const message = new SpeechSynthesisUtterance(options[2].value);
-  message.voice = glos;
-  message.pitch = pitchValue;
-  message.rate = rateValue;
-  window.speechSynthesis.speak(message);
+const msg = new SpeechSynthesisUtterance(elements.input);
+function handleInput(event) {
+  const { name, value } = event.currentTarget;
+  elements[name] = value;
 }
-speakButton.addEventListener('click', speak);
-options[0].onchange = function() {
-  pitchValue = options[0].value;
-};
-options[1].onchange = function() {
-  rateValue = options[1].value;
-};
 
+function populateVoiceList() {
+  voices = speechSynthesis.getVoices();
+  voicesDropdown.innerHTML = voices
+    .map(
+      voice =>
+        `<option value="${voice.name}">${voice.name} - ${voice.lang} </option>`
+    )
+    .join('');
+}
+function speak() {
+  msg.rate = elements.rate;
+  msg.pitch = elements.pitch;
+  window.speechSynthesis.speak(msg);
+}
+
+function cancelSpeaking() {
+  window.speechSynthesis.cancel();
+}
+speechSynthesis.onvoiceschanged = populateVoiceList;
+options.forEach(option => option.addEventListener('input', handleInput));
+speakButton.addEventListener('click', speak);
+stopButton.addEventListener('click', cancelSpeaking);
 voicesDropdown.onchange = function() {
-  glos = voices.find(voice => voice.lang === voicesDropdown.value);
-  console.log(glos);
+  msg.voice = voices.find(voice => voice.name === voicesDropdown.value);
 };
