@@ -24,3 +24,7 @@ slider.addEventListener('mousemove', event => {
   const drag = (x - posX) * 3;
   slider.scrollLeft = scrollLeft - drag;
 });
+// mousedown;
+// mouseleave;
+// mouseup;
+// mousemove;
