@@ -2,6 +2,8 @@ const timer = document.querySelector('.timer');
 const timerControls = timer.querySelectorAll('.timer__button');
 const timerForm = timer.querySelector('#custom');
 const display = document.querySelector('.display');
+const displayTimeLeft = display.querySelector('.display__time-left');
+const displayEndTime = display.querySelector('.display__end-time');
 let countdownTimer;
 
 function formatTimeLeft(date) {
@@ -15,8 +17,10 @@ function formatTimeLeft(date) {
 
 function formatEndTime(time) {
   const minutes = Math.floor(time / 60);
-  const seconds = (minutes * 60) % 60;
-  return `${minutes}:${seconds}`;
+  const seconds = time % 60;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+  const formatedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+  return `${formattedMinutes}:${formatedSeconds}`;
 }
 
 function displayTime(countdownTime) {
@@ -24,25 +28,16 @@ function displayTime(countdownTime) {
   const timeNow = new Date();
   const timeInMs = timeNow.getTime();
   const endTime = new Date(timeInMs + countdownTime * 1000);
-  display.querySelector('.display__end-time').innerHTML = formatTimeLeft(
-    endTime
-  );
-  display.querySelector('.display__time-left').innerHTML = formatEndTime(
-    countdownTime
-  );
+  displayEndTime.innerHTML = formatTimeLeft(endTime);
+  displayTimeLeft.innerHTML = formatEndTime(countdownTime);
   let timeLeft = countdownTime;
   countdownTimer = setInterval(() => {
     timeLeft -= 1;
-    display.querySelector('.display__time-left').innerHTML = formatEndTime(
-      timeLeft
-    );
+    displayTimeLeft.innerHTML = formatEndTime(timeLeft);
+    if (timeLeft === 0) {
+      clearInterval(countdownTimer);
+    }
   }, 1000);
-  if (timeLeft <= 0) {
-    console.log('chuj');
-    clearInterval(countdownTimer);
-    alert('end');
-    return null;
-  }
 }
 function handleTimer(e) {
   const countdownTime = e.currentTarget.dataset.time;
