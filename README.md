@@ -21,13 +21,13 @@
 18 - Adding Up Times with Reduce [done] </br>
 19 - Webcam Fun [omit due to camera lack]</br>
 20 - Speech Detection [done] </br>
-21 - Geolocation</br>
-22 - Follow Along Link Highlighter</br>
-23 - Speech Synthesis</br>
-24 - Sticky Nav</br>
-25 - Event Capture, Propagation, Bubbling and Once</br>
-26 - Stripe Follow Along Nav</br>
-27 - Click and Drag</br>
-28 - Video Speed Controller</br>
-29 - Countdown Timer</br>
-30 - Whack A Mole</br>
+21 - Geolocation [done] </br>
+22 - Follow Along Link Highlighter [done] </br>
+23 - Speech Synthesis [done] </br>
+24 - Sticky Nav [done] </br>
+25 - Event Capture, Propagation, Bubbling and Once [done] </br>
+26 - Stripe Follow Along Nav [done] </br>
+27 - Click and Drag [done] </br>
+28 - Video Speed Controller [done] </br>
+29 - Countdown Timer [done] </br>
+30 - Whack A Mole [done] </br>
